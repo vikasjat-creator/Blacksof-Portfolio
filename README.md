@@ -1,3 +1,5 @@
+
+#Readme trigger
 # Blacksof — Selected Work
 
 A single-page portfolio website showcasing selected work for Blacksof. Built as a static HTML/CSS/JS site bundled with Vite. All third-party assets (images, videos, fonts, libraries) are stored locally under `public/assets/` so the project is fully self-contained and can be pushed to a Git repository or hosted anywhere.

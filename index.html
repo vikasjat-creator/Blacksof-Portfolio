@@ -580,6 +580,19 @@
                         <div class="card-category">Institutional / Digital Identity</div>
                     </div>
                 </div>
+
+                <!-- DeJoule -->
+                <div class="work-card" onclick="showPage('dejoule')">
+                    <div class="card-image-wrapper">
+                        <video autoplay loop muted playsinline>
+                            <source src="/assets/video/dejoule-about-us-video-clip.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-title">DeJoule</div>
+                        <div class="card-category">Clean Energy / Brand Identity</div>
+                    </div>
+                </div>
             </div>
         </main>
 
@@ -787,6 +800,66 @@
                 </div>
             </footer>
         </main>
+
+        <!-- DEJOULE -->
+        <main id="dejoule-page" class="page-view">
+            <section class="section container-content reveal">
+                <h1 style="margin-top:80px; margin-bottom:50px;">DeJoule</h1>
+                <div class="narrow"><p>Building a powerful brand identity and digital ecosystem for sustainable clean energy innovation.</p></div>
+                <div class="tags" style="display: flex; gap: 10px; opacity: 0.6; font-size: 14px;"><span>Clean Energy</span> / <span>Brand Identity</span></div>
+            </section>
+            
+            <div class="container-mockup reveal"><img src="/assets/img/dejoule-hero-banner.png" class="flow-image"></div>
+
+            <div class="container-mockup reveal"><img src="/assets/img/dejoule-warehouse-building.png" class="flow-image"></div>
+
+            <div class="container-mockup reveal">
+                <video class="full" loop muted playsinline autoplay controls>
+                    <source src="/assets/video/dejoule-about-us-video-full.mp4" type="video/mp4">
+                </video>
+            </div>
+            
+            <div class="container-mockup reveal"><img src="/assets/img/dejoule-itc-casestudy.png" class="flow-image"></div>
+            <div class="container-mockup reveal"><img src="/assets/img/dejoule-aster-casestudy.png" class="flow-image"></div>
+
+            <div class="container-mockup reveal">                                    
+                    <video class="full" loop muted playsinline autoplay style="margin-bottom: 0;">
+                        <source src="/assets/video/dejoule-cpo-video.mp4" type="video/mp4">
+                    </video>
+            </div>
+
+            <div class="container-mockup reveal"><img src="/assets/img/dejoule-lemeridien-casestudy.png" class="flow-image"></div>
+            <div class="container-mockup reveal"><img src="/assets/img/dejoule-brochure.png" class="flow-image"></div>
+
+             <div class="container-mockup reveal">                    
+                    <video class="full" loop muted playsinline autoplaygi style="margin-bottom: 0;">
+                        <source src="/assets/video/dejoule-smart-alerts-video.mp4" type="video/mp4">
+                    </video>
+            </div>
+
+            <div class="container-mockup reveal"><img src="/assets/img/dejoule-booth-01.png" class="flow-image"></div>
+            <div class="container-mockup reveal"><img src="/assets/img/dejoule-booth-02.png" class="flow-image"></div>
+
+
+            <div class="container-mockup reveal">
+                <div class="split-mockup">                                        
+                    <div class="split-video">
+                        <video class="full" loop muted playsinline autoplay controls style="margin-bottom: 0;">
+                            <source src="/assets/video/dejoule-opex-video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="split-quote">"Enabling secure and intuitive digital interactions at a national scale."</div>
+                </div>
+            </div>
+           
+
+            <footer class="container-mockup project-footer reveal">
+                <div class="next-project-card" onclick="showPage('nippon-india')">
+                    <div class="next-project-info"><div class="next-project-label">Next Project</div><div class="next-project-title">Nippon India Mutual Fund</div></div>
+                    <div class="next-project-image"><img src="/assets/img/newspaper-banner.jpg"></div>
+                </div>
+            </footer>
+        </main>
     </div>
 
     <!-- ABOUT PANEL -->
@@ -806,7 +879,7 @@
         const themeToggle = document.getElementById('themeToggle');
         themeToggle.addEventListener('click', () => { document.body.classList.toggle('dark-mode'); });
 
-        const VALID_PAGES = ['work', 'nippon-india', 'gems-mantra', 'astro-arun', 'posidex', 'lauritz-knudsen', 'rbi'];
+        const VALID_PAGES = ['work', 'nippon-india', 'gems-mantra', 'astro-arun', 'posidex', 'lauritz-knudsen', 'rbi', 'dejoule'];
 
         function pathToPageId(pathname) {
             const slug = (pathname || '/').replace(/^\/+|\/+$/g, '');
@@ -835,7 +908,8 @@
                 'astro-arun': ["Astro Arun Pandit", "Transforming personal astrology into a modern digital brand and educational platform."],
                 'posidex': ["Posidex", "Strategic corporate identity and digital language for enterprise data intelligence."],
                 'lauritz-knudsen': ["Lauritz Knudsen", "Elevating brand presence through cohesive digital and visual systems."],
-                'rbi': ["Reserve Bank of India", "Engineering a robust digital framework for national financial governance."]
+                'rbi': ["Reserve Bank of India", "Engineering a robust digital framework for national financial governance."],
+                'dejoule': ["DeJoule", "Building a powerful brand identity and digital ecosystem for sustainable clean energy innovation."]
             };
 
             if (mappings[pageId]) {

@@ -3,6 +3,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
+import Work from "@/pages/work";
+import PiramalNutritionSolutions from "@/pages/piramal-nutrition-solutions";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +23,8 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/work" component={Work} />
+      <Route path="/work/piramal-nutrition-solutions" component={PiramalNutritionSolutions} />
       <Route component={NotFound} />
     </Switch>
   );

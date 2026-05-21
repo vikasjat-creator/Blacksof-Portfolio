@@ -486,6 +486,116 @@
         @media (max-width: 768px) {
             .main-nav { display: none; }
         }
+
+        .slider-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* INDIVIDUAL SLIDE STYLING */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            /* Crossfade and slight zoom effect */
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 6s linear;
+            transform: scale(1.05); 
+            z-index: 1;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 2;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* DARK GRADIENT OVERLAY FOR TEXT READABILITY */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        /* TEXT CONTENT ANIMATIONS */
+        .slide-content {
+            position: absolute;
+            bottom: 80px;
+            left: 5vw;
+            z-index: 4;
+            color: #fff;
+            max-width: 600px;
+        }
+
+        .slide-content h2 {
+            font-size: clamp(32px, 4vw, 56px);
+            margin: 0 0 10px 0;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .slide-content p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 0;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Staggered text entrance when slide becomes active */
+        .slide.active .slide-content h2 {
+            transform: translateY(0);
+            opacity: 1;
+            transition-delay: 0.4s;
+        }
+
+        .slide.active .slide-content p {
+            transform: translateY(0);
+            opacity: 0.8;
+            transition-delay: 0.6s;
+        }
+
+        /* PROGRESS BAR STYLING */
+        .progress-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: rgba(255, 255, 255, 0.2);
+            z-index: 10;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: #FF5722; /* Progress indicator color */
+        }
+
+        /* Animation triggered via JS */
+        @keyframes fillProgress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
     </style>
 </head>
 <body>
@@ -596,7 +706,10 @@
                 <!-- Piramal Nutrition Solutions -->
                 <div class="work-card" onclick="showPage('piramal-nutrition-solutions')">
                     <div class="card-image-wrapper">
-                        <img src="/assets/img/pns-magzine-01.jpg" alt="Piramal Nutrition Solutions">
+                        <video autoplay loop muted playsinline>
+                            <source src="/assets/video/pns-hero-banner-01.mp4" type="video/mp4">
+                        </video>
+                        <!-- <img src="/assets/img/pns-magzine-01.jpg" alt="Piramal Nutrition Solutions"> -->
                     </div>
                     <div class="card-info">
                         <div class="card-title">Piramal Nutrition Solutions</div>
@@ -613,6 +726,18 @@
                     <div class="card-info">
                         <div class="card-title">AAK</div>
                         <div class="card-category">Impact through strategic synergy</div>
+                    </div>
+                </div>
+                <!-- Kheyti -->
+                <div class="work-card" onclick="showPage('kheyti')">
+                    <div class="card-image-wrapper">
+                        <video autoplay loop muted playsinline>
+                            <source src="/assets/video/kheyti-hero-video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-title">Kheyti</div>
+                        <div class="card-category">Affordable climate-smart farming solution for India’s smallholders.</div>
                     </div>
                 </div>
             </div>
@@ -737,10 +862,25 @@
             <div class="container-mockup reveal"><img src="/assets/img/lk-banner-08.jpg" class="flow-image"></div>
             <div class="container-mockup reveal"><img src="/assets/img/lk-banner-06.png" class="flow-image"></div>
             <div class="container-mockup reveal"><img src="/assets/img/lk-banner-update-07.png" class="flow-image"></div>
-            <div class="container-mockup reveal"><img src="/assets/img/lk-banner-03.png" class="flow-image"></div>
-            <div class="container-mockup reveal"><img src="/assets/img/lk-banner-04.png" class="flow-image"></div>
+            <div class="container-mockup reveal">
+                <video class="full" loop muted playsinline autoplay controls controlsList="nodownload">
+                    <source src="/assets/video/lk-digital-board-video.mp4" type="video/mp4">
+                </video>
+            </div>
+            <!-- <div class="container-mockup reveal"><img src="/assets/img/lk-banner-03.png" class="flow-image"></div> -->
+            <div class="container-mockup reveal">
+                <video class="full" loop muted playsinline autoplay controls controlsList="nodownload">
+                    <source src="/assets/video/lk-digital-board-video-01.mp4" type="video/mp4">
+                </video>
+            </div>
+            <!-- <div class="container-mockup reveal"><img src="/assets/img/lk-banner-04.png" class="flow-image"></div> -->
             <div class="container-mockup reveal"><img src="/assets/img/lk-post-collage.jpg" class="flow-image"></div>
-            <div class="container-mockup reveal"><img src="/assets/img/lk-banner-09.png" class="flow-image"></div>
+            <div class="container-mockup reveal">
+                <video class="full" loop muted playsinline autoplay controls controlsList="nodownload">
+                    <source src="/assets/video/lk-award-video.mp4" type="video/mp4">
+                </video>
+            </div>
+            <!-- <div class="container-mockup reveal"><img src="/assets/img/lk-banner-09.png" class="flow-image"></div> -->
             <div class="container-mockup reveal"><img src="/assets/img/lk-emailer-standi-01.jpg" class="flow-image"></div>            
             <div class="container-mockup reveal"><img src="/assets/img/lk-emailer-01.png" class="flow-image"></div>
             <div class="container-mockup reveal"><img src="/assets/img/lk-emailer-02.png" class="flow-image"></div>
@@ -943,14 +1083,132 @@
                 <div class="tags" style="display: flex; gap: 10px; opacity: 0.6; font-size: 14px;"><span>Health & Wellness</span> / <span>Brand Identity</span></div>
             </section>
 
+            <div class="container-mockup reveal slider-container" style="overflow: hidden;margin-bottom: 30px;">
+            <!-- Overlay -->
+            <!-- <div class="overlay"></div> -->
+
+            <!-- Slides -->
+            <div class="slide active">
+                <!-- <img src="/assets/img/pns-event-booth-01.jpg" class="flow-image"> -->
+                <video class="full" loop muted playsinline autoplay>
+                        <source src="/assets/video/pns-hero-banner-01.mp4" type="video/mp4">
+                    </video>
+                <!-- <div class="slide-content">
+                    <h2>Nature's Majesty</h2>
+                    <p>Discovering the untouched peaks and valleys of the northern ranges.</p>
+                </div> -->
+            </div>
+
+            <div class="slide">
+                <img src="/assets/img/pns-event-booth-02.jpg" class="flow-image">
+                <!-- <div class="slide-content">
+                    <h2>Digital Horizons</h2>
+                    <p>Building the architectural foundations of modern data ecosystems.</p>
+                </div> -->
+            </div>
+
+            <div class="slide">
+                <img src="/assets/img/pns-event-02.jpg" class="flow-image">
+                <!-- <div class="slide-content">
+                    <h2>Digital Horizons</h2>
+                    <p>Building the architectural foundations of modern data ecosystems.</p>
+                </div> -->
+            </div>
+
+            <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        </div>
+
+        <div class="container-mockup reveal">                                    
+                    <video class="full" loop muted playsinline autoplay>
+                        <source src="/assets/video/PNS-maxreti-flipbook-video.mp4" type="video/mp4">
+                    </video>
+        </div> 
+
+        <div class="container-mockup reveal slider-container" style="overflow: hidden;margin-bottom: 30px;">
+            <!-- Overlay -->
+            <!-- <div class="overlay"></div> -->
+
+            <!-- Slides -->
+            <div class="slide active">
+                <img src="/assets/img/pns-brochure-01.jpg" class="flow-image">
+                <!-- <div class="slide-content">
+                    <h2>Nature's Majesty</h2>
+                    <p>Discovering the untouched peaks and valleys of the northern ranges.</p>
+                </div> -->
+            </div>
+
+            <div class="slide">
+                <img src="/assets/img/pns-brochure-02.jpg" class="flow-image">
+                <!-- <div class="slide-content">
+                    <h2>Digital Horizons</h2>
+                    <p>Building the architectural foundations of modern data ecosystems.</p>
+                </div> -->
+            </div>
+
+
+
+            <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        </div>
+
+        <div class="container-mockup reveal"><img src="/assets/img/pns-all-brouchers.jpg" class="flow-image"></div>
+
+            <!-- <div class="container-mockup reveal">                                    
+                    <video class="full" loop muted playsinline autoplay>
+                        <source src="/assets/video/pns-hero-banner-01.mp4" type="video/mp4">
+                    </video>
+            </div>  -->
+
             
-            <div class="container-mockup reveal"><img src="/assets/img/pns-event-booth-01.jpg" class="flow-image"></div>
             
-            <div class="container-mockup reveal"><img src="/assets/img/pns-event-booth-02.jpg" class="flow-image"></div>
+            <!-- <div class="container-mockup reveal"><img src="/assets/img/pns-event-booth-01.jpg" class="flow-image"></div>
             
-            <div class="container-mockup reveal"><img src="/assets/img/pns-event-02.png" class="flow-image"></div>
+            <div class="container-mockup reveal"><img src="/assets/img/pns-event-booth-02.jpg" class="flow-image"></div> -->
             
-            <div class="container-mockup reveal"><img src="/assets/img/pns-magzine-01.jpg" class="flow-image"></div>
+            <!-- <div class="container-mockup reveal"><img src="/assets/img/pns-event-02.jpg" class="flow-image"></div> -->
+            
+            <div class="container-mockup reveal slider-container" style="overflow: hidden;margin-bottom: 30px;">
+            <!-- Overlay -->
+            <!-- <div class="overlay"></div> -->
+
+            <!-- Slides -->
+            <div class="slide active">
+                <img src="/assets/img/pns-flyer-01.jpg" class="flow-image">
+                <!-- <div class="slide-content">
+                    <h2>Nature's Majesty</h2>
+                    <p>Discovering the untouched peaks and valleys of the northern ranges.</p>
+                </div> -->
+            </div>
+
+            <div class="slide">
+                <img src="/assets/img/pns-flyer-02.jpg" class="flow-image">
+                <!-- <div class="slide-content">
+                    <h2>Digital Horizons</h2>
+                    <p>Building the architectural foundations of modern data ecosystems.</p>
+                </div> -->
+            </div>
+
+            <div class="slide">
+                <img src="/assets/img/pns-flyer-03.jpg" class="flow-image">
+                <!-- <div class="slide-content">
+                    <h2>Global Scale</h2>
+                    <p>Connecting networks across continents with seamless data flow.</p>
+                </div> -->
+            </div>
+
+            <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        </div>
+
+        <div class="container-mockup reveal"><img src="/assets/img/pns-magzine-01.jpg" class="flow-image"></div>
+
             <div class="container-mockup reveal">                                    
                     <video class="full" loop muted playsinline autoplay>
                         <source src="/assets/video/pns-billboard-video-01.mp4" type="video/mp4">
@@ -970,21 +1228,16 @@
             
             
 
-            <div class="container-mockup reveal"><img src="/assets/img/pns-billboard-03.jpg" class="flow-image"></div>
-
-
-            <div class="container-mockup reveal">                                    
-                    <video class="full" loop muted playsinline autoplay>
-                        <source src="/assets/video/PNS-maxreti-flipbook-video.mp4" type="video/mp4">
-                    </video>
-            </div> 
-
-            <div class="container-mockup reveal"><img src="/assets/img/pns-flyer-01.jpg" class="flow-image"></div>                        
+            <!-- <div class="container-mockup reveal"><img src="/assets/img/pns-flyer-01.jpg" class="flow-image"></div>                        
             <div class="container-mockup reveal"><img src="/assets/img/pns-flyer-04.jpg" class="flow-image"></div>                        
-            <div class="container-mockup reveal"><img src="/assets/img/pns-flyer-05.jpg" class="flow-image"></div>
+            <div class="container-mockup reveal"><img src="/assets/img/pns-flyer-05.jpg" class="flow-image"></div> -->
 
-            <div class="container-mockup reveal"><img src="/assets/img/pns-brochure-01.jpg" class="flow-image"></div> 
-            <div class="container-mockup reveal"><img src="/assets/img/pns-brochure-02.jpg" class="flow-image"></div> 
+        
+
+        
+
+            <!-- <div class="container-mockup reveal"><img src="/assets/img/pns-brochure-01.jpg" class="flow-image"></div> 
+            <div class="container-mockup reveal"><img src="/assets/img/pns-brochure-02.jpg" class="flow-image"></div>  -->
 
             <!-- <div class="container-mockup reveal">
                 <div class="split-mockup">
@@ -1008,16 +1261,16 @@
                     </video>
             </div>
 
-
-            <div class="container-mockup reveal">                                    
-                    <video class="full" loop muted playsinline autoplay>
-                        <source src="/assets/video/pns-sm-video-mockup.mp4" type="video/mp4">
-                    </video>
-            </div>
-            
-
-            <div class="container-mockup reveal"><img src="/assets/img/pns-social-media-creatives.jpg" class="flow-image"></div>
-            
+            <div class="container-mockup reveal">
+                <div class="split-mockup">                                        
+                    <div class="split-quote">"Enabling secure and intuitive digital interactions at a national scale."</div>
+                    <div class="split-video">
+                        <video class="full" loop muted playsinline autoplay controlsList="nodownload" style="margin-bottom: 0;">
+                            <source src="/assets/video/pns-sm-video-02.mp4" type="video/mp4">
+                        </video>
+                    </div>                    
+                </div>
+            </div> 
             
 
             <div class="container-mockup reveal">                                    
@@ -1028,6 +1281,17 @@
 
             <div class="container-mockup reveal">                                    
                     <video class="full" loop muted playsinline autoplay>
+                        <source src="/assets/video/pns-sm-video-mockup.mp4" type="video/mp4">
+                    </video>
+            </div>
+            
+
+            <div class="container-mockup reveal"><img src="/assets/img/pns-social-media-creatives.jpg" class="flow-image"></div>
+
+            <div class="container-mockup reveal"><img src="/assets/img/pns-billboard-03.jpg" class="flow-image"></div>
+
+            <div class="container-mockup reveal">                                    
+                    <video class="full" loop muted playsinline autoplay>
                         <source src="/assets/video/pns-blog-video-01.mp4" type="video/mp4">
                     </video>
             </div>
@@ -1035,12 +1299,6 @@
             <div class="container-mockup reveal">                                    
                     <video class="full" loop muted playsinline autoplay>
                         <source src="/assets/video/pns-emailer-0.mp4" type="video/mp4">
-                    </video>
-            </div>
-
-            <div class="container-mockup reveal">                                    
-                    <video class="full" loop muted playsinline autoplay>
-                        <source src="/assets/video/pns-emailer-01.mp4" type="video/mp4">
                     </video>
             </div>
 
@@ -1168,6 +1426,64 @@
                 </div>
             </footer>
         </main>
+
+        <!-- Kheyti -->
+        <main id="kheyti-page" class="page-view">
+            <section class="section container-content reveal">
+                    <h1 style="margin-top:80px; margin-bottom:50px;">Kheyti</h1>
+                    <div class="narrow"><p>Kheyti is a platform that connects consumers with local farmers to purchase fresh, organic produce.</p></div>
+                    <div class="tags" style="display: flex; gap: 10px; opacity: 0.6; font-size: 14px;"><span>Health & Wellness</span> / <span>Brand Identity</span></div>
+            </section>
+
+            
+
+            <div class="container-mockup reveal">                                    
+                    <video class="full" loop muted playsinline autoplay>
+                        <source src="/assets/video/kheyti-hero-banner.mp4" type="video/mp4" >
+                    </video>
+            </div>
+
+            <div class="container-mockup reveal">                                    
+                    <video class="full" loop muted playsinline autoplay>
+                        <source src="/assets/video/kheyti-globe-video.mp4" type="video/mp4" >
+                    </video>
+            </div>
+
+            <div class="container-mockup reveal" style="overflow: hidden;">                                    
+                    <video class="full" loop muted playsinline autoplay style="scale: 1.2;">
+                        <source src="/assets/video/kheyti-video-01.mp4" type="video/mp4" >
+                    </video>
+            </div>
+
+            <div class="container-mockup reveal" style="margin-top: 35px;"><img src="/assets/img/kheyti-laptop-01.jpg" class="flow-image"></div>
+
+            <div class="container-mockup reveal" style="margin-top: 35px;"><img src="/assets/img/kheyti-laptop-02.jpg" class="flow-image"></div>
+
+            <div class="container-mockup reveal" style="margin-top: 35px;"><img src="/assets/img/kheyti-typography.jpg" class="flow-image"></div>
+            
+            <div class="container-mockup reveal" style="margin-top: 35px;"><img src="/assets/img/kheyti-style-guide.jpg" class="flow-image"></div>            
+
+            <div class="container-mockup reveal"><img src="/assets/img/kheyti-farmer-testimonial-billboard-01.jpg" class="flow-image"></div>
+
+            <div class="container-mockup reveal" style="margin-top: 35px;"><img src="/assets/img/kheyti-ipad-01.jpg" class="flow-image"></div>
+
+            <div class="container-mockup reveal" style="margin-top: 35px;"><img src="/assets/img/kheyti-multiple-pages.jpg" class="flow-image"></div>
+
+            <div class="container-mockup reveal"><img src="/assets/img/kheyti-farmer-testimonial-billboard-02.jpg" class="flow-image"></div>
+            
+            <div class="container-mockup reveal" style="margin-top: 35px;"><img src="/assets/img/kheyti-mobile-01.jpg" class="flow-image"></div>
+
+            <div class="container-mockup reveal" style="margin-top: 35px;"><img src="/assets/img/kheyti-mobile-02.jpg" class="flow-image"></div>
+
+            
+            
+            <footer class="container-mockup project-footer reveal">
+                <div class="next-project-card" onclick="showPage('dejoule')">
+                    <div class="next-project-info"><div class="next-project-label">Next Project</div><div class="next-project-title">DeJoule</div></div>
+                    <div class="next-project-image"><img src="/assets/img/dejoule-warehouse-building.png"></div>
+                </div>
+            </footer>
+        </main>
     </div>
 
     <!-- ABOUT PANEL -->
@@ -1187,7 +1503,7 @@
         const themeToggle = document.getElementById('themeToggle');
         themeToggle.addEventListener('click', () => { document.body.classList.toggle('dark-mode'); });
 
-        const VALID_PAGES = ['work', 'nippon-india', 'gems-mantra', 'astro-arun', 'posidex', 'lauritz-knudsen', 'rbi', 'dejoule', 'piramal-nutrition-solutions', 'aak'];
+        const VALID_PAGES = ['work', 'nippon-india', 'gems-mantra', 'astro-arun', 'posidex', 'lauritz-knudsen', 'rbi', 'dejoule', 'piramal-nutrition-solutions', 'aak', 'kheyti'];
 
         function pathToPageId(pathname) {
             const slug = (pathname || '/').replace(/^\/+|\/+$/g, '');
@@ -1219,7 +1535,8 @@
                 'rbi': ["Reserve Bank of India", "Engineering a robust digital framework for national financial governance."],
                 'dejoule': ["DeJoule", "Building a powerful brand identity and digital ecosystem for sustainable clean energy innovation."],
                 'piramal-nutrition-solutions': ["Piramal Nutrition Solutions", "Crafting a comprehensive brand identity and digital ecosystem for innovative nutrition and wellness solutions."],
-                'aak': ["AAK", "AAK India offers plant-based oils and fats to enhance food taste, texture, and health."]
+                'aak': ["AAK", "AAK India offers plant-based oils and fats to enhance food taste, texture, and health."],
+                'kheyti': ["Kheyti", "Kheyti is a platform that connects consumers with local farmers to purchase fresh, organic produce."]
             };
 
             if (mappings[pageId]) {
@@ -1276,6 +1593,38 @@
             document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
         showPage(pathToPageId(window.location.pathname), false);
+    </script>
+
+    <script>
+        const slideDuration = 5000; // Duration for each slide in milliseconds (5 seconds)
+
+        // Initialize ALL sliders found on the page independently
+        document.querySelectorAll('.slider-container').forEach(container => {
+            const slides = container.querySelectorAll('.slide');
+            const progressBar = container.querySelector('.progress-bar');
+            let currentIndex = 0;
+
+            function showSlide(index) {
+                // Remove active class from all slides in THIS container
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+
+                // Reset and restart the progress bar animation for THIS container
+                progressBar.style.animation = 'none';
+                progressBar.offsetHeight; /* Trigger reflow to restart animation */
+                progressBar.style.animation = `fillProgress ${slideDuration}ms linear forwards`;
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                showSlide(currentIndex);
+            }
+
+            // Start the slider
+            showSlide(currentIndex);
+            setInterval(nextSlide, slideDuration);
+        });
     </script>
 </body>
 </html>
